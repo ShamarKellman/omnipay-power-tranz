@@ -2,8 +2,6 @@
 
 namespace Omnipay\PowerTranz\Schema;
 
-use ReflectionNamedType;
-
 trait SchemaTraits
 {
     /**
