@@ -1,0 +1,10 @@
+parameters:
+	level: 5
+	paths:
+		- src
+		- tests
+	ignoreErrors:
+		- '#Call to an undefined method Omnipay\\Common\\AbstractGateway::alive\(\)\.#'
+		- '#Call to an undefined method Omnipay\\Common\\AbstractGateway::PowerTranzSale\(\)\.#'
+	parallel:
+		maximumNumberOfProcesses: 1

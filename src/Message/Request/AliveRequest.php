@@ -6,7 +6,7 @@ use Omnipay\PowerTranz\Message\AbstractRequest;
 
 class AliveRequest extends AbstractRequest
 {
-    const ENDPOINT = 'Alive';
+    public const ENDPOINT = 'Alive';
 
     public function getData()
     {
@@ -17,5 +17,4 @@ class AliveRequest extends AbstractRequest
     {
         return $this->getApiEndpoint().self::ENDPOINT;
     }
-
 }

@@ -6,7 +6,7 @@ use Omnipay\PowerTranz\Schema\RefundRequest as SchemaRefundRequest;
 
 class RefundRequest extends \Omnipay\PowerTranz\Message\AbstractRequest
 {
-    const ENDPOINT = 'Refund';
+    public const ENDPOINT = 'Refund';
 
     /**
      * @inheritDoc

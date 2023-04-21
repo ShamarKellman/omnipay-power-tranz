@@ -1,4 +1,5 @@
 <?php
+
 namespace Omnipay\PowerTranz\Message;
 
 use Omnipay\Common\Message\RequestInterface;
@@ -16,19 +17,22 @@ abstract class AbstractResponse extends \Omnipay\Common\Message\AbstractResponse
     {
         parent::__construct($request, $data);
 
-        if ($data instanceof ResponseInterface)
+        if ($data instanceof ResponseInterface) {
             $this->decodeGatewayResponse();
+        }
 
-        if (is_array($data))
+        if (is_array($data)) {
             $this->hydrate($data, get_called_class());
+        }
     }
 
     /**
      * @throws \JsonException
      * @throws \ReflectionException
      */
-    protected function decodeGatewayResponse() : AbstractResponse {
-        /** @var $httpResponse ResponseInterface */
+    protected function decodeGatewayResponse(): AbstractResponse
+    {
+        /** @var ResponseInterface $httpResponse */
         $httpResponse = $this->getData();
 
         $json = stripslashes($httpResponse->getBody()->getContents());

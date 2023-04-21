@@ -8,7 +8,8 @@ trait ResponseTraits
 {
     use AuthTrait;
 
-    public function getTransactionType() : ?int {
+    public function getTransactionType(): ?int
+    {
         return $this->TransactionType ?? null;
     }
 

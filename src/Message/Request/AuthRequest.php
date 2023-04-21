@@ -7,7 +7,7 @@ use Omnipay\PowerTranz\Schema\AuthRequest as SchemaAuthRequest;
 
 class AuthRequest extends AbstractRequest
 {
-    const ENDPOINT = 'Auth';
+    public const ENDPOINT = 'Auth';
 
     /**
      * @inheritDoc

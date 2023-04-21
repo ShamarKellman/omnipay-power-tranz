@@ -28,8 +28,9 @@ class CompleteAuthorizeRequest extends AuthRequest
      */
     public function sendData($data): AbstractResponse
     {
-        if ($this->merchantDecision())
+        if ($this->merchantDecision()) {
             return parent::sendData($data);
+        }
 
         return $this->merchantDeniedResponse();
     }
@@ -38,12 +39,13 @@ class CompleteAuthorizeRequest extends AuthRequest
      * @throws \ReflectionException
      * @throws \JsonException
      */
-    protected function merchantDeniedResponse() : AbstractResponse
+    protected function merchantDeniedResponse(): AbstractResponse
     {
         $this->Approved = false;
 
-        if (isset($this->RiskManagement->ThreeDSecure->StatusReason))
+        if (isset($this->RiskManagement->ThreeDSecure->StatusReason)) {
             $this->ResponseMessage = (StatusReason::lookup($this->RiskManagement->ThreeDSecure->StatusReason)) ?? $this->ResponseMessage;
+        }
 
         // CompleteAuthorizeResponse or CompleteSaleResponse
         $response_class = str_replace('Request', 'Response', get_called_class());
@@ -55,25 +57,25 @@ class CompleteAuthorizeRequest extends AuthRequest
      * Logic to decide if transaction should be completed by POSTing to SPI Payment
      * @return bool
      */
-    protected function merchantDecision() : bool
+    protected function merchantDecision(): bool
     {
         $allow = false;
 
         // Check IsoResponseCode and 3DS Auth Status
-        switch ($this->IsoResponseCode)
-        {
+        switch ($this->IsoResponseCode) {
             // 3DS not supported, we will allow
             case '3D1':
                 $allow = true;
+
                 break;
 
-            // 3DS complete
+                // 3DS complete
             case '3D0':
                 if (isset($this->RiskManagement->ThreeDSecure->AuthenticationStatus) &&
-                    in_array($this->RiskManagement->ThreeDSecure->AuthenticationStatus, ["Y", "A"]))
-                {
+                    in_array($this->RiskManagement->ThreeDSecure->AuthenticationStatus, ["Y", "A"])) {
                     $allow = true;
                 }
+
                 break;
         }
 

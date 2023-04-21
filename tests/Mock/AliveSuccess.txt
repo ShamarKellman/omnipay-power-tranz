@@ -1,0 +1,11 @@
+HTTP/1.1 200 OK
+Date: Tue, 11 Feb 2014 02:34:58 GMT
+Content-type: application/json; charset=utf-8
+
+{
+  "Name": "PowerTranz Api",
+  "AssemblyVersion": "1.7.18.0",
+  "ApiVersion": "1.3",
+  "Type": "SG1.Api",
+  "Affinity": "3plyg9wt7wz"
+}

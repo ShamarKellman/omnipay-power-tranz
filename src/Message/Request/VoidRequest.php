@@ -6,7 +6,7 @@ use Omnipay\PowerTranz\Schema\VoidRequest as SchemaVoidRequest;
 
 class VoidRequest extends \Omnipay\PowerTranz\Message\AbstractRequest
 {
-    const ENDPOINT = 'Void';
+    public const ENDPOINT = 'Void';
 
     /**
      * @inheritDoc

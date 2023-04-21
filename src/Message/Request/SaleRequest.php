@@ -7,7 +7,7 @@ use Omnipay\PowerTranz\Schema\SaleRequest as SchemaSaleRequest;
 
 class SaleRequest extends AbstractRequest
 {
-    const ENDPOINT = 'Sale';
+    public const ENDPOINT = 'Sale';
 
     /**
      * @inheritDoc

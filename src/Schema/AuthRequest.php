@@ -134,7 +134,7 @@ class AuthRequest extends AbstractSchema
      * Order identifier - Order ID assigned by the merchant
      * @var string|null
      */
-    public string $OrderIdentifier;
+    public ?string $OrderIdentifier;
 
     public Address $BillingAddress;
     public ?Address $ShippingAddress;

@@ -6,7 +6,7 @@ use Omnipay\PowerTranz\Schema\CaptureRequest as SchemaCaptureRequest;
 
 class CaptureRequest extends \Omnipay\PowerTranz\Message\AbstractRequest
 {
-    const ENDPOINT = 'Capture';
+    public const ENDPOINT = 'Capture';
 
     /**
      * @inheritDoc

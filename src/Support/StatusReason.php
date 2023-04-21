@@ -4,7 +4,7 @@ namespace Omnipay\PowerTranz\Support;
 
 class StatusReason
 {
-    public static function lookup(string $code) : ?string
+    public static function lookup(string $code): ?string
     {
         $data = [
             "01" => "Card authentication failed",

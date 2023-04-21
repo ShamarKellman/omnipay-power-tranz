@@ -2,6 +2,8 @@
 
 namespace Omnipay\PowerTranz\Schema;
 
+use ReflectionNamedType;
+
 trait SchemaTraits
 {
     /**
@@ -11,34 +13,29 @@ trait SchemaTraits
     {
         $nestedData = [];
         $reflection = new \ReflectionClass($parent);
-        foreach ($data as $key => $value)
-        {
+        foreach ($data as $key => $value) {
+            // @phpstan-ignore-next-line
             $paramType = ($reflection->hasProperty($key)) ? $reflection->getProperty($key)->getType()->getName() : false;
 
-            if (is_array($value))
-            {
+            if (is_array($value)) {
                 // Special case 'Errors' key (due to PHP not supporting typed arrays) we need to check if this key exits and convert members to Error objects
-                if ($key == 'Errors')
-                {
+                if ($key == 'Errors') {
                     $errors = [];
-                    foreach ($value as $errorData)
-                    {
+                    foreach ($value as $errorData) {
                         $errors[] = new Error((array) $errorData);
                     }
                     $nestedData[$key] = $errors;
-                }
-                else {
+                } else {
                     if ($paramType && class_exists($paramType)) {
                         $nestedObject = $this->hydrate($value, $paramType);
                         $nestedData[$key] = $nestedObject;
                     }
                 }
-            }
-            else {
-                switch ($paramType)
-                {
+            } else {
+                switch ($paramType) {
                     case 'float':
-                        $value = round($value,2);
+                        $value = round($value, 2);
+
                         break;
                 }
 
@@ -47,7 +44,9 @@ trait SchemaTraits
         }
 
         $object = ($parent != get_called_class()) ? new $parent($nestedData) : $this;
-        foreach ($nestedData as $key => $value) $object->$key = $value;
+        foreach ($nestedData as $key => $value) {
+            $object->$key = $value;
+        }
 
         return $object;
     }
@@ -60,31 +59,29 @@ trait SchemaTraits
         return json_encode($this->toArray(), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_THROW_ON_ERROR);
     }
 
-    public static function getSchemaProperties() : array
+    public static function getSchemaProperties(): array
     {
         $properties = [];
         $class = new \ReflectionClass(get_called_class());
-        foreach ($class->getProperties() as $property)
-        {
+        foreach ($class->getProperties() as $property) {
             $properties[] = $property->getName();
         }
 
         return $properties;
     }
 
-    public function toArray() : array {
+    public function toArray(): array
+    {
         return $this->recursiveReflection($this);
     }
 
-    protected function recursiveReflection(object $object) : array
+    protected function recursiveReflection(object $object): array
     {
         $data = [];
 
         $class = new \ReflectionClass($object);
-        foreach ($class->getProperties() as $property)
-        {
-            if ($property->isPublic() && $property->isInitialized($object))
-            {
+        foreach ($class->getProperties() as $property) {
+            if ($property->isPublic() && $property->isInitialized($object)) {
                 $value = $property->getValue($object);
 
                 if (is_object($value)) {

@@ -16,7 +16,7 @@ class ExtendedRequestData extends AbstractSchema
      * Url to redirect the cardholder to when then the transaction is complete
      * @var string|null
      */
-    public string $MerchantResponseUrl;
+    public ?string $MerchantResponseUrl;
 
     public ?HostedPageRequestData $HostedPage;
 }

@@ -13,7 +13,7 @@ class DataHelper
      * @param string $alpha3
      * @return string
      */
-    public static function CurrencyCode(string $alpha3) : string
+    public static function CurrencyCode(string $alpha3): string
     {
         return (new ISO4217())->getByCode($alpha3)['numeric'];
     }
@@ -24,15 +24,18 @@ class DataHelper
      * @param bool $alpha2
      * @return string|null
      */
-    public static function CountryCode(string $alpha, bool $alpha2 = true) : ?string
+    public static function CountryCode(string $alpha, bool $alpha2 = true): ?string
     {
         $alpha = trim($alpha);
+
         try {
-            if ($alpha2) return (new ISO3166())->alpha2($alpha)['numeric'];
+            if ($alpha2) {
+                return (new ISO3166())->alpha2($alpha)['numeric'];
+            }
 
             return (new ISO3166())->alpha3($alpha)['numeric'];
-        } catch (\Exception $e)
-        {}
+        } catch (\Exception $e) {
+        }
 
         return null;
     }

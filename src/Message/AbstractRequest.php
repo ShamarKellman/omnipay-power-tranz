@@ -14,7 +14,7 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
 
     protected array $commonHeaders = [
         'Accept' => 'application/json',
-        'Content-Type' => 'application/json'
+        'Content-Type' => 'application/json',
     ];
 
     /**
@@ -27,7 +27,7 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
      * @return $this
      * @throws \ReflectionException
      */
-    public function initialize(array $parameters = array()) : AbstractRequest
+    public function initialize(array $parameters = []): AbstractRequest
     {
         if (null !== $this->response) {
             throw new RuntimeException('Request cannot be modified after it has been sent!');
@@ -45,7 +45,7 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
      * @throws InvalidResponseException
      * @throws \JsonException
      */
-    public function sendData($data) : AbstractResponse
+    public function sendData($data): AbstractResponse
     {
         $this->credentialCheck();
         $messageClassName = $this->getMessageClassName();
@@ -59,43 +59,40 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
             $requestBody
         );
 
-        if ($httpResponse instanceof \Psr\Http\Message\ResponseInterface) {
-            if ($httpResponse->getStatusCode() == "200") {
-                $responseClassName = $this->getResponseClassName($messageClassName);
+        if ($httpResponse->getStatusCode() == "200") {
+            $responseClassName = $this->getResponseClassName($messageClassName);
 
-                return $this->response = new $responseClassName($this, $httpResponse);
-            }
-
-            throw new InvalidResponseException($httpResponse->getReasonPhrase(), $httpResponse->getStatusCode());
+            return $this->response = new $responseClassName($this, $httpResponse);
         }
 
-        throw new InvalidResponseException();
+        throw new InvalidResponseException($httpResponse->getReasonPhrase(), $httpResponse->getStatusCode());
     }
 
-    protected function getResponseClassName(string $messageClassName) : string
+    protected function getResponseClassName(string $messageClassName): string
     {
         return __NAMESPACE__."\\Response\\".str_replace("Request", "Response", $messageClassName);
     }
 
-    protected function getMessageClassName() : string
+    protected function getMessageClassName(): string
     {
-        $className = explode("\\",get_called_class());
+        $className = explode("\\", get_called_class());
+
         return array_pop($className);
     }
 
-    protected function getApiEndpoint() : string
+    protected function getApiEndpoint(): string
     {
         return ($this->getTestMode()) ? Constants::API_STAGING : Constants::API_PRODUCTION;
     }
 
-    protected function getSpiEndpoint() : string
+    protected function getSpiEndpoint(): string
     {
         return ($this->getTestMode()) ? Constants::SPI_STAGING : Constants::SPI_PRODUCTION;
     }
 
-    protected function credentialCheck() : AbstractRequest {
-        if ($this->getPowerTranzCredentialsFlag() === true)
-        {
+    protected function credentialCheck(): AbstractRequest
+    {
+        if ($this->getPowerTranzCredentialsFlag() === true) {
             $this->commonHeaders['PowerTranz-'.Constants::PARAM_POWERTRANZ_ID] = $this->getParameter(Constants::PARAM_POWERTRANZ_ID);
             $this->commonHeaders['PowerTranz-'.Constants::PARAM_POWERTRANZ_PASSWORD] = $this->getParameter(Constants::PARAM_POWERTRANZ_PASSWORD);
         }
@@ -109,9 +106,10 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
      * @param string $id
      * @return AbstractRequest
      */
-    public function setPowerTranzId(string $id) : AbstractRequest
+    public function setPowerTranzId(string $id): AbstractRequest
     {
         $this->setParameter(Constants::PARAM_POWERTRANZ_ID, $id);
+
         return $this;
     }
 
@@ -121,9 +119,10 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
      * @param string $password
      * @return AbstractRequest
      */
-    public function setPowerTranzPassword(string $password) : AbstractRequest
+    public function setPowerTranzPassword(string $password): AbstractRequest
     {
         $this->setParameter(Constants::PARAM_POWERTRANZ_PASSWORD, $password);
+
         return $this;
     }
 
@@ -133,13 +132,15 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
      * @param bool $flag
      * @return $this
      */
-    public function setPowerTranzCredentialsFlag(bool $flag) : AbstractRequest
+    public function setPowerTranzCredentialsFlag(bool $flag): AbstractRequest
     {
         $this->setParameter(Constants::PARAM_POWERTRANZ_CREDENTIALS_REQUIRED, $flag);
+
         return $this;
     }
 
-    public function getPowerTranzCredentialsFlag() : bool {
+    public function getPowerTranzCredentialsFlag(): bool
+    {
         return $this->getParameter(Constants::PARAM_POWERTRANZ_CREDENTIALS_REQUIRED) ?? true;
     }
 
@@ -148,13 +149,15 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
      * @param string $method
      * @return $this
      */
-    public function setHttpMethod(string $method) : AbstractRequest
+    public function setHttpMethod(string $method): AbstractRequest
     {
         $this->setParameter(Constants::PARAM_HTTP_METHOD, $method);
+
         return $this;
     }
 
-    public function getHttpMethod() : string {
+    public function getHttpMethod(): string
+    {
         return $this->getParameter(Constants::PARAM_HTTP_METHOD) ?? "POST";
     }
 
@@ -165,7 +168,9 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
     public function getCurrencyNumeric(): ?string
     {
         $currency = parent::getCurrencyNumeric();
-        if (is_string($currency) && strlen($currency) == 2) return "0".$currency;
+        if (is_string($currency) && strlen($currency) == 2) {
+            return "0".$currency;
+        }
 
         return $currency;
     }
@@ -179,5 +184,5 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
      *
      * @return string
      */
-    abstract protected function getEndpoint() : string;
+    abstract protected function getEndpoint(): string;
 }

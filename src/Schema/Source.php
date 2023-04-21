@@ -10,13 +10,13 @@ use Omnipay\Common\CreditCard;
 class Source extends AbstractSchema
 {
     /**
-     * Whether or not the source card was present. If this is true, the card is present.
+     * Whether the source card was present. If this is true, the card is present.
      * @var bool
      */
     public bool $CardPresent;
 
     /**
-     * Whether or not the card data present is for an EMV fallback
+     * Whether the card data present is for an EMV fallback
      * @var bool
      */
     public bool $CardEmvFallback;
@@ -116,10 +116,9 @@ class Source extends AbstractSchema
                 'CardPan' => $Card->getNumber(),
                 'CardCvv' => $Card->getCvv(),
                 'CardExpiration' => $Card->getExpiryDate('ym'),
-                'CardholderName' => $Card->getName()
+                'CardholderName' => $Card->getName(),
             ];
-        }
-        else {
+        } else {
             $map = $Card;
         }
 

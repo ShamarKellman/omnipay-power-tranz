@@ -24,14 +24,16 @@ class AuthResponse extends SchemaAuthResponse
      */
     public function isRedirect()
     {
-        if (isset($this->RedirectData)) return true;
+        if (isset($this->RedirectData)) {
+            return true;
+        }
     }
 
     /**
      * Get the HTML form data returned by the gateway
      * @return string|null
      */
-    public function getRedirectData() : ?string
+    public function getRedirectData(): ?string // @phpstan-ignore-line
     {
         return $this->RedirectData;
     }

@@ -25,12 +25,12 @@ class Gateway extends AbstractGateway
     /**
      * @return string
      */
-    public function getName() : string
+    public function getName(): string
     {
         return Constants::DRIVER_NAME;
     }
 
-    public function getDefaultParameters() : array
+    public function getDefaultParameters(): array
     {
         return include 'DefaultParameters.php';
     }
@@ -47,6 +47,7 @@ class Gateway extends AbstractGateway
     public function setReturnUrl(string $url): Gateway
     {
         $this->setMerchantResponseURL($url);
+
         return $this->setParameter("returnUrl", $url);
     }
 
@@ -76,7 +77,7 @@ class Gateway extends AbstractGateway
      * @param string $id
      * @return Gateway
      */
-    public function setPowerTranzId(string $id) : Gateway
+    public function setPowerTranzId(string $id): Gateway
     {
         return $this->setParameter(Constants::PARAM_POWERTRANZ_ID, $id);
     }
@@ -87,7 +88,7 @@ class Gateway extends AbstractGateway
      * @param string $password
      * @return Gateway
      */
-    public function setPowerTranzPassword(string $password) : Gateway
+    public function setPowerTranzPassword(string $password): Gateway
     {
         return $this->setParameter(Constants::PARAM_POWERTRANZ_PASSWORD, $password);
     }
@@ -100,7 +101,7 @@ class Gateway extends AbstractGateway
      * @throws \JsonException
      * @throws \ReflectionException
      */
-    protected function createOptionsForPaymentCompletion(array $options = [], bool $singlePass) : array
+    protected function createOptionsForPaymentCompletion(array $options = [], bool $singlePass = false, AbstractRequest $originalAuthRequest = null): array
     {
         $options[Constants::PARAM_POWERTRANZ_CREDENTIALS_REQUIRED] = false;
 
@@ -126,8 +127,8 @@ class Gateway extends AbstractGateway
      */
     public function Alive(array $options = [
         Constants::PARAM_POWERTRANZ_CREDENTIALS_REQUIRED => false,
-        Constants::PARAM_HTTP_METHOD => 'GET'
-    ]) : AbstractRequest
+        Constants::PARAM_HTTP_METHOD => 'GET',
+    ]): AbstractRequest
     {
         return $this->createRequest(AliveRequest::class, $options);
     }
@@ -139,9 +140,10 @@ class Gateway extends AbstractGateway
      * @return AbstractRequest
      * @throws \ReflectionException
      */
-    public function purchase(array $options = []) : AbstractRequest
+    public function purchase(array $options = []): AbstractRequest
     {
         $saleRequest = new Schema\SaleRequest($options);
+
         return $this->PowerTranzSale($saleRequest);
     }
 
@@ -154,7 +156,7 @@ class Gateway extends AbstractGateway
      * @throws \JsonException
      * @throws \ReflectionException
      */
-    public function completePurchase(array $options = [], AbstractRequest $originalSaleRequest = null) : AbstractRequest
+    public function completePurchase(array $options = [], AbstractRequest $originalSaleRequest = null): AbstractRequest
     {
         return $this->createRequest(
             CompleteSaleRequest::class,
@@ -170,9 +172,10 @@ class Gateway extends AbstractGateway
      * @return AbstractRequest
      * @throws \ReflectionException
      */
-    public function authorize(array $options = []) : AbstractRequest
+    public function authorize(array $options = []): AbstractRequest
     {
         $authRequest = new Schema\AuthRequest($options);
+
         return $this->PowerTranzAuth($authRequest);
     }
 
@@ -185,11 +188,11 @@ class Gateway extends AbstractGateway
      * @throws \JsonException
      * @throws \ReflectionException
      */
-    public function completeAuthorize(array $options = [], AbstractRequest $originalAuthRequest = null) : AbstractRequest
+    public function completeAuthorize(array $options = [], AbstractRequest $originalAuthRequest = null): AbstractRequest
     {
         return $this->createRequest(
             CompleteAuthorizeRequest::class,
-            $this->createOptionsForPaymentCompletion($options, false)
+            $this->createOptionsForPaymentCompletion($options, false, $originalAuthRequest)
         );
     }
 
@@ -201,9 +204,10 @@ class Gateway extends AbstractGateway
      * @return AbstractRequest
      * @throws \ReflectionException
      */
-    public function capture(array $options = []) : AbstractRequest
+    public function capture(array $options = []): AbstractRequest
     {
         $captureRequest = new Schema\CaptureRequest($options);
+
         return $this->PowerTranzCapture($captureRequest);
     }
 
@@ -214,9 +218,10 @@ class Gateway extends AbstractGateway
      * @return AbstractRequest
      * @throws \ReflectionException
      */
-    public function refund(array $options = []) : AbstractRequest
+    public function refund(array $options = []): AbstractRequest
     {
         $refundRequest = new Schema\RefundRequest($options);
+
         return $this->PowerTranzRefund($refundRequest);
     }
 
@@ -227,9 +232,10 @@ class Gateway extends AbstractGateway
      * @return AbstractRequest
      * @throws \ReflectionException
      */
-    public function void(array $options = []) : AbstractRequest
+    public function void(array $options = []): AbstractRequest
     {
         $voidRequest = new Schema\VoidRequest($options);
+
         return $this->PowerTranzVoid($voidRequest);
     }
 
@@ -239,7 +245,7 @@ class Gateway extends AbstractGateway
      * @param Schema\SaleRequest $saleRequest
      * @return AbstractRequest
      */
-    public function PowerTranzSale(Schema\SaleRequest $saleRequest) : AbstractRequest
+    public function PowerTranzSale(Schema\SaleRequest $saleRequest): AbstractRequest
     {
         return $this->createRequest(SaleRequest::class, $saleRequest->toArray());
     }
@@ -250,7 +256,7 @@ class Gateway extends AbstractGateway
      * @param Schema\AuthRequest $authRequest
      * @return AbstractRequest
      */
-    public function PowerTranzAuth(Schema\AuthRequest $authRequest) : AbstractRequest
+    public function PowerTranzAuth(Schema\AuthRequest $authRequest): AbstractRequest
     {
         return $this->createRequest(AuthRequest::class, $authRequest->toArray());
     }
@@ -261,7 +267,7 @@ class Gateway extends AbstractGateway
      * @param Schema\CaptureRequest $captureRequest
      * @return AbstractRequest
      */
-    public function PowerTranzCapture(Schema\CaptureRequest $captureRequest) : AbstractRequest
+    public function PowerTranzCapture(Schema\CaptureRequest $captureRequest): AbstractRequest
     {
         return $this->createRequest(CaptureRequest::class, $captureRequest->toArray());
     }
@@ -272,7 +278,7 @@ class Gateway extends AbstractGateway
      * @param Schema\RefundRequest $refundRequest
      * @return AbstractRequest
      */
-    public function PowerTranzRefund(Schema\RefundRequest $refundRequest) : AbstractRequest
+    public function PowerTranzRefund(Schema\RefundRequest $refundRequest): AbstractRequest
     {
         return $this->createRequest(RefundRequest::class, $refundRequest->toArray());
     }
@@ -283,7 +289,7 @@ class Gateway extends AbstractGateway
      * @param Schema\VoidRequest $voidRequest
      * @return AbstractRequest
      */
-    public function PowerTranzVoid(Schema\VoidRequest $voidRequest) : AbstractRequest
+    public function PowerTranzVoid(Schema\VoidRequest $voidRequest): AbstractRequest
     {
         return $this->createRequest(VoidRequest::class, $voidRequest->toArray());
     }
