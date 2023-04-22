@@ -68,7 +68,7 @@ trait AuthTrait
      * Standard response code
      * @var string|null
      */
-    public ?string $ResponseCode;
+    public ?string $ResponseCode = null;
 
     /**
      * Issuer authentication data for EMV purposes; used with the EMV card
