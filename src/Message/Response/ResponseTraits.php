@@ -28,6 +28,11 @@ trait ResponseTraits
         return $this->IsoResponseCode ?? null;
     }
 
+    public function getResponseCode(): ?string
+    {
+        return $this?->ResponseCode;
+    }
+
     public function getTransactionId(): ?string
     {
         return $this->OrderIdentifier ?? null;

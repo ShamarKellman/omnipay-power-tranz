@@ -65,6 +65,12 @@ trait AuthTrait
     public ?string $IsoResponseCode;
 
     /**
+     * Standard response code
+     * @var string|null
+     */
+    public ?string $ResponseCode;
+
+    /**
      * Issuer authentication data for EMV purposes; used with the EMV card
      * @var string|null
      */
