@@ -20,49 +20,49 @@ trait AuthTrait
      * Authorization code
      * @var string|null
      */
-    public ?string $AuthorizationCode;
+    public ?string $AuthorizationCode = null;
 
     /**
      * Transaction identifier
      * @var string|null
      */
-    public ?string $TransactionIdentifier;
+    public ?string $TransactionIdentifier = null;
 
     /**
      * Approved total amount
      * @var float|null
      */
-    public ?float $TotalAmount;
+    public ?float $TotalAmount = null;
 
     /**
      * Currency code
      * @var string|null
      */
-    public ?string $CurrencyCode;
+    public ?string $CurrencyCode = null;
 
     /**
      * Retrieval Reference Number
      * @var string|null
      */
-    public ?string $RRN;
+    public ?string $RRN = null;
 
     /**
      * Host Retrieval Reference Number
      * @var string|null
      */
-    public ?string $HostRRN;
+    public ?string $HostRRN = null;
 
     /**
      * Brand of the card used
      * @var string|null
      */
-    public ?string $CardBrand;
+    public ?string $CardBrand = null;
 
     /**
      * Standard ISO response code
      * @var string|null
      */
-    public ?string $IsoResponseCode;
+    public ?string $IsoResponseCode = null;
 
     /**
      * Standard response code
@@ -74,19 +74,19 @@ trait AuthTrait
      * Issuer authentication data for EMV purposes; used with the EMV card
      * @var string|null
      */
-    public ?string $EmvIssuerAuthenticationData;
+    public ?string $EmvIssuerAuthenticationData = null;
 
     /**
      * Issuer scripts for EMV purposes; executed against the EMV card
      * @var string|null
      */
-    public ?string $EmvIssuerScripts;
+    public ?string $EmvIssuerScripts = null;
 
     /**
      * Authorization Response Code in response EMV data
      * @var string|null
      */
-    public ?string $EmvResponseCode;
+    public ?string $EmvResponseCode = null;
 
     /**
      * Response message
@@ -95,34 +95,34 @@ trait AuthTrait
     public ?string $ResponseMessage;
 
     public ?RiskManagementResponse $RiskManagement;
-    public ?object $CustomData;
-    public ?object $Host;
+    public ?object $CustomData = null;
+    public ?object $Host = null;
 
     /**
      * PowerTranz Token for the Pan
      * @var string|null
      */
-    public ?string $PanToken;
+    public ?string $PanToken = null;
 
     /**
      * External identifier for the transaction
      * @var string|null
      */
-    public ?string $ExternalIdentifier;
+    public ?string $ExternalIdentifier = null;
 
     /**
      * OrderIdentifier mirrored from request
      * @var string|null
      */
-    public ?string $OrderIdentifier;
+    public ?string $OrderIdentifier = null;
 
-    public ?array $Errors;
+    public ?array $Errors = null;
 
     /**
      * HTML redirect data required for various integration types
      * @var string|null
      */
-    public ?string $RedirectData;
+    public ?string $RedirectData = null;
 
     /**
      * Single use integration token
@@ -130,5 +130,5 @@ trait AuthTrait
      */
     public ?string $SpiToken;
 
-    public ?Address $BillingAddress;
+    public ?Address $BillingAddress = null;
 }
