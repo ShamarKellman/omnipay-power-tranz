@@ -14,9 +14,9 @@ class AuthRequest extends AbstractSchema
     /**
      * Total amount to authorize
      * DEC(18,3)
-     * @var float
+     * @var string
      */
-    public float $TotalAmount;
+    public string $TotalAmount;
 
     /**
      * Tip amount
