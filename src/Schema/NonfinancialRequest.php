@@ -11,5 +11,5 @@ class NonfinancialRequest extends AuthRequest
      * If true, tokenizes and returns the tokenized PAN
      * @var bool|null
      */
-    public ?bool $Tokenize;
+    public ?bool $Tokenize = null;
 }

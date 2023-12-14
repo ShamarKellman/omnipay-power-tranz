@@ -6,11 +6,11 @@ use Omnipay\PowerTranz\Message\AbstractResponse;
 
 class AliveResponse extends AbstractResponse
 {
-    public ?string $Affinity;
-    public ?string $ApiVersion;
-    public ?string $AssemblyVersion;
-    public ?string $Name;
-    public ?string $Type;
+    public ?string $Affinity = null;
+    public ?string $ApiVersion = null;
+    public ?string $AssemblyVersion = null;
+    public ?string $Name = null;
+    public ?string $Type = null;
 
     public function isSuccessful(): bool
     {

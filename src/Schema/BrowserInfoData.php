@@ -4,14 +4,14 @@ namespace Omnipay\PowerTranz\Schema;
 
 class BrowserInfoData extends AbstractSchema
 {
-    public ?string $AcceptHeader;
-    public ?string $Language;
-    public ?string $ScreenHeight;
-    public ?string $ScreenWidth;
-    public ?string $TimeZone;
-    public ?string $UserAgent;
-    public ?string $IP;
-    public ?bool $JavaEnabled;
-    public ?bool $JavascriptEnabled;
-    public ?string $ColorDepth;
+    public ?string $AcceptHeader = null;
+    public ?string $Language = null;
+    public ?string $ScreenHeight = null;
+    public ?string $ScreenWidth = null;
+    public ?string $TimeZone = null;
+    public ?string $UserAgent = null;
+    public ?string $IP = null;
+    public ?bool $JavaEnabled = null;
+    public ?bool $JavascriptEnabled = null;
+    public ?string $ColorDepth = null;
 }

@@ -2,9 +2,10 @@
 
 namespace Omnipay\PowerTranz\Message\Request;
 
+use Omnipay\PowerTranz\Message\AbstractRequest;
 use Omnipay\PowerTranz\Schema\RefundRequest as SchemaRefundRequest;
 
-class RefundRequest extends \Omnipay\PowerTranz\Message\AbstractRequest
+class RefundRequest extends AbstractRequest
 {
     public const ENDPOINT = 'Refund';
 

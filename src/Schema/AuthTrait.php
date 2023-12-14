@@ -128,7 +128,7 @@ trait AuthTrait
      * Single use integration token
      * @var string|null
      */
-    public ?string $SpiToken;
+    public ?string $SpiToken = null;
 
     public ?Address $BillingAddress = null;
 }

@@ -22,19 +22,19 @@ class AuthRequest extends AbstractSchema
      * Tip amount
      * @var float|null
      */
-    public ?float $TipAmount;
+    public ?float $TipAmount = null;
 
     /**
      * Tax amount
      * @var float|null
      */
-    public ?float $TaxAmount;
+    public ?float $TaxAmount = null;
 
     /**
      * CashBackAmount or other amount
      * @var float|null
      */
-    public ?float $OtherAmount;
+    public ?float $OtherAmount = null;
 
     /**
      * Currency code ISO 4217
@@ -46,7 +46,7 @@ class AuthRequest extends AbstractSchema
      * Local time at transaction initiation hhmmss
      * @var string|null
      */
-    public ?string $LocalTime;
+    public ?string $LocalTime = null;
 
     /**
      * Local date at transaction initiation YYYYMMDD
@@ -70,37 +70,37 @@ class AuthRequest extends AbstractSchema
      * If true, a BIN Check is performed with the transaction
      * @var bool|null
      */
-    public ?bool $BinCheck;
+    public ?bool $BinCheck  = null;
 
     /**
      * If true, Fraud Check will be performed with the transaction
      * @var bool|null
      */
-    public ?bool $FraudCheck;
+    public ?bool $FraudCheck  = null;
 
     /**
      * If true, this is the first transaction in a recurring series
      * @var bool|null
      */
-    public ?bool $RecurringInitial;
+    public ?bool $RecurringInitial  = null;
 
     /**
      * If true, this transaction is part of a recurring series
      * @var bool|null
      */
-    public ?bool $Recurring;
+    public ?bool $Recurring  = null;
 
     /**
      * If true, this transaction is a Card-on-file transaction
      * @var bool|null
      */
-    public ?bool $CardOnFile;
+    public ?bool $CardOnFile = null;
 
     /**
      * If true, perform an account verification
      * @var bool|null
      */
-    public ?bool $AccountVerification;
+    public ?bool $AccountVerification = null;
 
     /**
      * Credit or Debit Source Card Data
@@ -108,36 +108,36 @@ class AuthRequest extends AbstractSchema
      */
     public Source $Source;
 
-    public ?string $TerminalId;
-    public ?string $TerminalCode;
-    public ?string $TerminalSerialNumber;
+    public ?string $TerminalId = null;
+    public ?string $TerminalCode = null;
+    public ?string $TerminalSerialNumber  = null;
 
     /**
      * External identifier for the transaction
      * @var string|null
      */
-    public ?string $ExternalIdentifier;
+    public ?string $ExternalIdentifier = null;
 
     /**
      * External identifier for the transaction's batch
      * @var string|null
      */
-    public ?string $ExternalBatchIdentifier;
+    public ?string $ExternalBatchIdentifier  = null;
 
     /**
      * Optional external group identifier
      * @var string|null
      */
-    public ?string $ExternalGroupIdentifier;
+    public ?string $ExternalGroupIdentifier = null;
 
     /**
      * Order identifier - Order ID assigned by the merchant
      * @var string|null
      */
-    public ?string $OrderIdentifier;
+    public ?string $OrderIdentifier = null;
 
     public Address $BillingAddress;
-    public ?Address $ShippingAddress;
+    public ?Address $ShippingAddress = null;
 
     /**
      * Indicates whether ShippingAddress is the same as BillingAddress

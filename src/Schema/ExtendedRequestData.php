@@ -4,19 +4,19 @@ namespace Omnipay\PowerTranz\Schema;
 
 class ExtendedRequestData extends AbstractSchema
 {
-    public ?Address $SecondaryAddress;
-    public ?object $CustomData;
-    public ?object $Level2CustomData;
-    public ?object $Level3CustomData;
+    public ?Address $SecondaryAddress = null;
+    public ?object $CustomData = null;
+    public ?object $Level2CustomData = null;
+    public ?object $Level3CustomData = null;
     public ThreeDSecureRequestData $ThreeDSecure;
-    public ?RecurringRequestData $Recurring;
-    public ?BrowserInfoData $BrowserInfo;
+    public ?RecurringRequestData $Recurring = null;
+    public ?BrowserInfoData $BrowserInfo = null;
 
     /**
      * Url to redirect the cardholder to when then the transaction is complete
      * @var string|null
      */
-    public ?string $MerchantResponseUrl;
+    public ?string $MerchantResponseUrl = null;
 
-    public ?HostedPageRequestData $HostedPage;
+    public ?HostedPageRequestData $HostedPage = null;
 }

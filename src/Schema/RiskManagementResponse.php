@@ -7,8 +7,8 @@ namespace Omnipay\PowerTranz\Schema;
  */
 class RiskManagementResponse extends AbstractSchema
 {
-    public ?string $AvsResponseCode;
-    public ?string $CvvResponseCode;
-    public ?ThreeDSecureResponse $ThreeDSecure;
-    public ?object $FraudCheck;
+    public ?string $AvsResponseCode = null;
+    public ?string $CvvResponseCode = null;
+    public ?ThreeDSecureResponse $ThreeDSecure = null;
+    public ?object $FraudCheck = null;
 }

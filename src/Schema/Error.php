@@ -4,6 +4,6 @@ namespace Omnipay\PowerTranz\Schema;
 
 class Error extends AbstractSchema
 {
-    public ?string $Code;
-    public ?string $Message;
+    public ?string $Code = null;
+    public ?string $Message = null;
 }

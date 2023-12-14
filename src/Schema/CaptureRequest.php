@@ -20,13 +20,13 @@ class CaptureRequest extends AbstractSchema
      * Tip amount
      * @var float|null
      */
-    public ?float $TipAmount;
+    public ?float $TipAmount = null;
 
     /**
      * Tax amount
      * @var float|null
      */
-    public ?float $TaxAmount;
+    public ?float $TaxAmount = null;
 
     /**
      * CashBackAmount or other amount
@@ -38,11 +38,11 @@ class CaptureRequest extends AbstractSchema
      * External identifier for the transaction
      * @var string|null
      */
-    public ?string $ExternalIdentifier;
+    public ?string $ExternalIdentifier = null;
 
     /**
      * Optional external group identifier
      * @var string|null
      */
-    public ?string $ExternalGroupIdentifier;
+    public ?string $ExternalGroupIdentifier = null;
 }

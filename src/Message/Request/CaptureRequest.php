@@ -2,9 +2,10 @@
 
 namespace Omnipay\PowerTranz\Message\Request;
 
+use Omnipay\PowerTranz\Message\AbstractRequest;
 use Omnipay\PowerTranz\Schema\CaptureRequest as SchemaCaptureRequest;
 
-class CaptureRequest extends \Omnipay\PowerTranz\Message\AbstractRequest
+class CaptureRequest extends AbstractRequest
 {
     public const ENDPOINT = 'Capture';
 

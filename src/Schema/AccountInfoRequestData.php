@@ -4,20 +4,20 @@ namespace Omnipay\PowerTranz\Schema;
 
 class AccountInfoRequestData extends AbstractSchema
 {
-    public ?string $AccountAgeIndicator;
-    public ?string $AccountChangeDate;
-    public ?string $AccountChangeIndicator;
-    public ?string $AccountDate;
-    public ?string $AccountPasswordChangeDate;
-    public ?string $AccountPasswordChangeIndicator;
-    public ?string $AccountPurchaseCount;
-    public ?string $AccountProvisioningAttempts;
-    public ?string $AccountDayTransactions;
-    public ?string $AccountYearTransactions;
-    public ?string $PaymentAccountAge;
-    public ?string $PaymentAccountAgeIndicator;
-    public ?string $ShipAddressUsageDate;
-    public ?string $ShipAddressUsageIndicator;
-    public ?string $ShipNameIndicator;
-    public ?string $SuspiciousAccountActivity;
+    public ?string $AccountAgeIndicator = null;
+    public ?string $AccountChangeDate = null;
+    public ?string $AccountChangeIndicator = null;
+    public ?string $AccountDate = null;
+    public ?string $AccountPasswordChangeDate = null;
+    public ?string $AccountPasswordChangeIndicator = null;
+    public ?string $AccountPurchaseCount = null;
+    public ?string $AccountProvisioningAttempts = null;
+    public ?string $AccountDayTransactions = null;
+    public ?string $AccountYearTransactions = null;
+    public ?string $PaymentAccountAge = null;
+    public ?string $PaymentAccountAgeIndicator = null;
+    public ?string $ShipAddressUsageDate = null;
+    public ?string $ShipAddressUsageIndicator = null;
+    public ?string $ShipNameIndicator = null;
+    public ?string $SuspiciousAccountActivity = null;
 }

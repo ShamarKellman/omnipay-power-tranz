@@ -4,5 +4,5 @@ namespace Omnipay\PowerTranz\Schema;
 
 class TransOrder extends Transaction
 {
-    public ?Order $OrderSummary;
+    public ?Order $OrderSummary = null;
 }

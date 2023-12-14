@@ -4,12 +4,12 @@ namespace Omnipay\PowerTranz\Schema;
 
 class Address extends AbstractSchema
 {
-    public ?string $FirstName;
-    public ?string $LastName;
-    public ?string $Line1;
-    public ?string $Line2;
-    public ?string $City;
-    public ?string $County;
+    public ?string $FirstName = null;
+    public ?string $LastName = null;
+    public ?string $Line1 = null;
+    public ?string $Line2 = null;
+    public ?string $City = null;
+    public ?string $County = null;
 
     /**
      * State – if supplied must be the country subdivision code defined in ISO 3166-2.
@@ -17,7 +17,7 @@ class Address extends AbstractSchema
      *
      * @var string|null
      */
-    public ?string $State;
+    public ?string $State = null;
 
     /**
      * Postal code or zip code
@@ -33,7 +33,7 @@ class Address extends AbstractSchema
      */
     public string $CountryCode;
 
-    public ?string $EmailAddress;
+    public ?string $EmailAddress = null;
 
     /**
      * Valid phone number including country code
@@ -42,7 +42,7 @@ class Address extends AbstractSchema
      *
      * @var string|null
      */
-    public ?string $PhoneNumber;
-    public ?string $PhoneNumber2;
-    public ?string $PhoneNumber3;
+    public ?string $PhoneNumber = null;
+    public ?string $PhoneNumber2 = null;
+    public ?string $PhoneNumber3 = null;
 }

@@ -4,16 +4,16 @@ namespace Omnipay\PowerTranz\Schema;
 
 class Order extends AbstractSchema
 {
-    public ?int $CaptureCount;
-    public ?int $CreditCount;
-    public ?string $CurrencyCode;
-    public ?string $LastCaptureDateTime;
-    public ?string $LastCreditDateTime;
-    public ?string $OrderIdentifier;
-    public ?string $OriginalTrxnDateTime;
-    public ?string $OriginalTrxnIdentifier;
-    public ?float $SettledAmount;
-    public ?float $TotalCaptureAmount;
-    public ?float $TotalCreditAmount;
-    public ?string $VoidDateTime;
+    public ?int $CaptureCount = null;
+    public ?int $CreditCount = null;
+    public ?string $CurrencyCode = null;
+    public ?string $LastCaptureDateTime = null;
+    public ?string $LastCreditDateTime = null;
+    public ?string $OrderIdentifier = null;
+    public ?string $OriginalTrxnDateTime = null;
+    public ?string $OriginalTrxnIdentifier = null;
+    public ?float $SettledAmount = null;
+    public ?float $TotalCaptureAmount = null;
+    public ?float $TotalCreditAmount = null;
+    public ?string $VoidDateTime = null;
 }

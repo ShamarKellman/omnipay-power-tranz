@@ -43,7 +43,7 @@ class AuthResponse extends SchemaAuthResponse
      *
      * @return void
      */
-    public function redirect()
+    public function redirect(): void
     {
         echo $this->getRedirectData();
         exit;

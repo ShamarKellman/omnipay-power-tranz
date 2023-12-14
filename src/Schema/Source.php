@@ -37,7 +37,7 @@ class Source extends AbstractSchema
      * CP: "01" = Checking, "02" = Savings ECOM: "01" = Not Applicable, "02" = Credit "03" = Debit
      * @var string|null
      */
-    public ?string $AccountType;
+    public ?string $AccountType = null;
 
     /**
      * Whether or not the source was delivered via contactless (e.g. NFC) technology
@@ -61,7 +61,7 @@ class Source extends AbstractSchema
      * Card verification code
      * @var string|null
      */
-    public ?string $CardCvv;
+    public ?string $CardCvv = null;
 
     /**
      * Card expiration date YYMM
@@ -69,32 +69,32 @@ class Source extends AbstractSchema
      */
     public string $CardExpiration;
 
-    public ?string $Token;
-    public ?string $TokenType;
-    public ?string $CardTrack1Data;
-    public ?string $CardTrack2Data;
-    public ?string $CardTrack3Data;
+    public ?string $Token = null;
+    public ?string $TokenType = null;
+    public ?string $CardTrack1Data = null;
+    public ?string $CardTrack2Data = null;
+    public ?string $CardTrack3Data = null;
 
     /**
      * Card track data (ambiguous as to track separation)
      * @var string|null
      */
-    public ?string $CardTrackData;
+    public ?string $CardTrackData = null;
 
-    public ?string $EncryptedCardTrack1Data;
-    public ?string $EncryptedCardTrack2Data;
-    public ?string $EncryptedCardTrack3Data;
+    public ?string $EncryptedCardTrack1Data = null;
+    public ?string $EncryptedCardTrack2Data = null;
+    public ?string $EncryptedCardTrack3Data = null;
 
     /**
      * Encrypted card track data (ambiguous as to track separation)
      * @var string|null
      */
-    public ?string $EncryptedCardTrackData;
+    public ?string $EncryptedCardTrackData = null;
 
-    public ?string $Ksn;
-    public ?string $EncryptedPinBlock;
-    public ?string $PinBlockKsn;
-    public ?string $CardEmvData;
+    public ?string $Ksn = null;
+    public ?string $EncryptedPinBlock = null;
+    public ?string $PinBlockKsn = null;
+    public ?string $CardEmvData = null;
 
     /**
      * 2-45 characters

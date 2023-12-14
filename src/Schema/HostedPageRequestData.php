@@ -8,11 +8,11 @@ class HostedPageRequestData extends AbstractSchema
      * Hosted page set name
      * @var string|null
      */
-    public ?string $PageSet;
+    public ?string $PageSet = null;
 
     /**
      * Hosted page name
      * @var string|null
      */
-    public ?string $PageName;
+    public ?string $PageName = null;
 }

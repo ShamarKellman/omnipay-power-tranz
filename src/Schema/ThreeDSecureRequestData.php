@@ -8,37 +8,37 @@ class ThreeDSecureRequestData extends AbstractSchema
      * ECI Indicator
      * @var string|null
      */
-    public ?string $Eci;
+    public ?string $Eci = null;
 
     /**
      * CAVV value
      * @var string|null
      */
-    public ?string $Cavv;
+    public ?string $Cavv = null;
 
     /**
      * 3DS Transaction Id
      * @var string|null
      */
-    public ?string $Xid;
+    public ?string $Xid = null;
 
     /**
      * 3DS Authentication Status
      * @var string|null
      */
-    public ?string $AuthenticationStatus;
+    public ?string $AuthenticationStatus = null;
 
     /**
      * 3DS Protocol Version
      * @var string|null
      */
-    public ?string $ProtocolVersion;
+    public ?string $ProtocolVersion = null;
 
     /**
      * 3DS DirectoryServer Transaction Id
      * @var string|null
      */
-    public ?string $DSTransId;
+    public ?string $DSTransId = null;
 
     /**
      * Mandatory Challenge window size for 3DS2. 1=250x400; 2=390x400; 3=500x600; 4=600x400; 5=100%
@@ -50,13 +50,13 @@ class ThreeDSecureRequestData extends AbstractSchema
      * 3DS2 Channel Indicator.
      * @var string|null
      */
-    public ?string $ChannelIndicator;
+    public ?string $ChannelIndicator = null;
 
     /**
      * 3DS2 3RI Indicator. Values currently accepted: "01" = Recurring transaction
      * @var string|null
      */
-    public ?string $RiIndicator;
+    public ?string $RiIndicator = null;
 
     /**
      * Requestor Challenge Indicator "01", "02", "03", or "04". Default is "01" (no preference)
@@ -67,25 +67,25 @@ class ThreeDSecureRequestData extends AbstractSchema
      *
      * @var string|null
      */
-    public ?string $ChallengeIndicator;
+    public ?string $ChallengeIndicator = null;
 
     /**
      * 3DS2 Authentication Indicator (threeDSRequestorAuthenticationInd). Defaults to "01" = Payment transaction
      * @var string|null
      */
-    public ?string $AuthenticationIndicator;
+    public ?string $AuthenticationIndicator = null;
 
     /**
      * 3DS2 Message Category. "01" = PA, "02" = NPA, etc.
      * @var string|null
      */
-    public ?string $MessageCategory;
+    public ?string $MessageCategory = null;
 
     /**
      * 3DS2 Transaction Type (transType). "01" = Goods/Service, "02" = Check Acceptance, etc.
      * @var string|null
      */
-    public ?string $TransactionType;
+    public ?string $TransactionType = null;
 
-    public ?AccountInfoRequestData $AccountInfo;
+    public ?AccountInfoRequestData $AccountInfo = null;
 }

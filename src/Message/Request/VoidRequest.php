@@ -2,9 +2,10 @@
 
 namespace Omnipay\PowerTranz\Message\Request;
 
+use Omnipay\PowerTranz\Message\AbstractRequest;
 use Omnipay\PowerTranz\Schema\VoidRequest as SchemaVoidRequest;
 
-class VoidRequest extends \Omnipay\PowerTranz\Message\AbstractRequest
+class VoidRequest extends AbstractRequest
 {
     public const ENDPOINT = 'Void';
 
