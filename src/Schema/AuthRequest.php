@@ -70,25 +70,25 @@ class AuthRequest extends AbstractSchema
      * If true, a BIN Check is performed with the transaction
      * @var bool|null
      */
-    public ?bool $BinCheck  = null;
+    public ?bool $BinCheck = null;
 
     /**
      * If true, Fraud Check will be performed with the transaction
      * @var bool|null
      */
-    public ?bool $FraudCheck  = null;
+    public ?bool $FraudCheck = null;
 
     /**
      * If true, this is the first transaction in a recurring series
      * @var bool|null
      */
-    public ?bool $RecurringInitial  = null;
+    public ?bool $RecurringInitial = null;
 
     /**
      * If true, this transaction is part of a recurring series
      * @var bool|null
      */
-    public ?bool $Recurring  = null;
+    public ?bool $Recurring = null;
 
     /**
      * If true, this transaction is a Card-on-file transaction
@@ -110,7 +110,7 @@ class AuthRequest extends AbstractSchema
 
     public ?string $TerminalId = null;
     public ?string $TerminalCode = null;
-    public ?string $TerminalSerialNumber  = null;
+    public ?string $TerminalSerialNumber = null;
 
     /**
      * External identifier for the transaction
@@ -122,7 +122,7 @@ class AuthRequest extends AbstractSchema
      * External identifier for the transaction's batch
      * @var string|null
      */
-    public ?string $ExternalBatchIdentifier  = null;
+    public ?string $ExternalBatchIdentifier = null;
 
     /**
      * Optional external group identifier
